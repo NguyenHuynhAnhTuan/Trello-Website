@@ -8,7 +8,7 @@ function App() {
 
     return (
         <>
-            <h1>Welcome</h1>
+            <h1>Welcome to Trello Website</h1>
             <div>
                 <a href='https://vite.dev' target='_blank'>
                     <img src={viteLogo} className='logo' alt='Vite logo' />
