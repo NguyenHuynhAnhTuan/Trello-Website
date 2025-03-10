@@ -1,5 +1,7 @@
-import { AccountTreeOutlined, AdbOutlined, AddToHomeScreenOutlined } from '@mui/icons-material'
-import { Button } from '@mui/material'
+import Delete from '@mui/icons-material/Delete'
+import AddToHomeScreenOutlined from '@mui/icons-material/AddToHomeScreenOutlined'
+import AdbOutlined from '@mui/icons-material/AdbOutlined'
+import Button from '@mui/material/Button'
 
 function App() {
   return (
@@ -10,8 +12,8 @@ function App() {
       <Button variant="outlined">Outlined</Button>
       <div>Im learning ReactJS</div>
       <AdbOutlined></AdbOutlined>
-      <AccountTreeOutlined></AccountTreeOutlined>
       <AddToHomeScreenOutlined></AddToHomeScreenOutlined>
+      <Delete></Delete>
     </>
   )
 }
