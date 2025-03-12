@@ -1,5 +1,5 @@
 import Box from '@mui/material/Box'
-import ModeSelect from '~/components/ModeSelect'
+import ModeSelect from '~/components/ModeSelect/ModeSelect'
 import Apps from '@mui/icons-material/Apps'
 import SvgIcon from '@mui/icons-material/Apps'
 import Typography from '@mui/material/Typography'
@@ -25,7 +25,6 @@ import { useState } from 'react'
 
 function AppBar() {
   const [searchValue, setSearchValue] = useState('')
-
   return (
     <Box sx={{
       width: '100%',
@@ -40,11 +39,14 @@ function AppBar() {
     }}>
       {/*  */}
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+        {/* Website Name and Logo */}
         <Apps sx={{ color: 'white' }}></Apps>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: .5 }}>
           <SvgIcon component={TrelloLogo} inheritViewBox fontSize='small' sx={{ color: 'white' }}></SvgIcon>
           <Typography variant='span' sx={{ fontSize: '1.3em', fontWeight: 'bold', color: 'white' }}>Trello</Typography>
         </Box>
+
+        {/* Left Side */}
         <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 1 }}>
           <Workspaces></Workspaces>
           <Recents></Recents>
@@ -63,7 +65,7 @@ function AppBar() {
         </Box>
       </Box>
 
-      {/*  */}
+      {/* Rigth Side */}
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
           <TextField
@@ -109,7 +111,8 @@ function AppBar() {
                   borderColor: 'white'
                 }
               }
-            }} />
+            }} ></TextField>
+
           <ModeSelect></ModeSelect>
         </Box>
 

@@ -36,10 +36,9 @@ function BoardBar() {
       gap: 2,
       paddingX: 2,
       overflowX: 'auto',
-      bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#34495e' : '#1976d2'),
-      borderBottom: '1px solid white'
+      bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#34495e' : '#1976d2')
     }}>
-      {/*  */}
+      {/* Left Side */}
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
         <Chip
           sx={MENU_STYLE}
@@ -82,7 +81,7 @@ function BoardBar() {
         />
       </Box>
 
-      {/*  */}
+      {/* Right Side */}
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
         <Button
           sx={{
@@ -104,7 +103,12 @@ function BoardBar() {
               width: '34px',
               height: '34px',
               fontSize: '16px',
-              border: 'none'
+              border: 'none',
+              color: 'white',
+              cursor: 'pointer',
+              '&:first-of-type': {
+                backgroundColor: '#a4b0de'
+              }
             }
           }}
         >
