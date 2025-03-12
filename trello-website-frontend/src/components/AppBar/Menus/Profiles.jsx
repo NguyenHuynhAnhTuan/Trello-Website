@@ -33,9 +33,9 @@ function Profiles() {
           aria-expanded={open ? 'true' : undefined}
         >
           <Avatar
-            sx={{ width: 32, height: 32 }}
+            sx={{ width: 36, height: 36 }}
             alt='Avatar'
-            src='https://static.vecteezy.com/system/resources/thumbnails/006/487/917/small_2x/man-avatar-icon-free-vector.jpg' />
+            src='https://www.svgrepo.com/show/382106/male-avatar-boy-face-man-user-9.svg' />
         </IconButton>
       </Tooltip>
       <Menu
