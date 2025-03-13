@@ -17,8 +17,34 @@ import Button from '@mui/material/Button'
 import DragHandleIcon from '@mui/icons-material/DragHandle'
 import { useState } from 'react'
 import ListCards from './ListCards/ListCards'
+import { mapOrder } from '~/utils/sorts'
 
-function Column() {
+import { useSortable } from '@dnd-kit/sortable'
+import { CSS } from '@dnd-kit/utilities'
+
+function Column( props ) {
+  const { column } = props
+  const orderedListCards = mapOrder(column?.cards, column?.cardOrderIds, '_id')
+
+  //Dnd Kit Drag Modification
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition
+  } = useSortable({
+    id: column._id,
+    data: { ...column }
+  })
+
+  const dndKitColumnStyles = {
+    // touchAction: 'none', //Dành cho sensor default dạng pointer sensor
+    transform: CSS.Translate.toString(transform),
+    transition
+  }
+
+  // Handle JS Function
   const [anchorEl, setAnchorEl] = useState(null)
   const open = Boolean(anchorEl)
   const handleClick = (event) => {
@@ -29,15 +55,20 @@ function Column() {
   }
 
   return (
-    <Box sx={{
-      minWidth: '300px',
-      maxWidth: '300px',
-      backgroundColor: (theme) => (theme.palette.mode === 'dark' ? '#333643' : '#ebecf0'),
-      ml: 2,
-      borderRadius: '6px',
-      height: 'fit-content',
-      maxHeight: (theme) => `calc(${theme.trello.boardContentHeight} - ${theme.spacing(5)})`
-    }}>
+    <Box
+      ref={setNodeRef}
+      style={dndKitColumnStyles}
+      {...attributes}
+      {...listeners}
+      sx={{
+        minWidth: '300px',
+        maxWidth: '300px',
+        backgroundColor: (theme) => (theme.palette.mode === 'dark' ? '#333643' : '#ebecf0'),
+        ml: 2,
+        borderRadius: '6px',
+        height: 'fit-content',
+        maxHeight: (theme) => `calc(${theme.trello.boardContentHeight} - ${theme.spacing(5)})`
+      }}>
       {/* Header */}
       <Box
         sx={{
@@ -56,7 +87,7 @@ function Column() {
             cursor: 'pointer'
           }}
         >
-          Column Title
+          {column?.title}
         </Typography>
 
         <Box>
@@ -123,7 +154,7 @@ function Column() {
       </Box>
 
       {/* List Card */}
-      <ListCards></ListCards>
+      <ListCards cards={orderedListCards}></ListCards>
 
       {/* Footer */}
       <Box
